@@ -1,0 +1,47 @@
+将WGS-84坐标转换为北京-54坐标的示例
+
+              		BLH blh=new BLH();
+		Pxyz xyz54 =new Pxyz();
+		blh.B=2453.11929011;
+		blh.L=11809.51368618;
+		Xiamen_cotrans trans =new Xiamen_cotrans();
+		xyz54=trans.BLH2xyz(blh);
+class BLH
+//大地坐标（B,L,H）
+B;//纬度
+L;//经度
+H;//
+
+class Pxyz
+//平面坐标（x,y,z）
+x;与纬度对应
+y;与经度对应
+z;
+
+class XYZ
+//空间直角坐标（X,Y,Z）
+X;
+Y;
+Z;
+
+/**
+ * 
+ * @author administered
+ *使用前请将所有角度的单位转换为弧度制
+ *方法说明如下：
+ *co_84to54_4canshu  用四参数法将WGS-84坐标转换为北京-54坐标
+ *co_84to54  用七参数法将WGS-84坐标转换为北京-54坐标
+ *Co_BLHtoXYZ  将大地坐标转换为空间直角坐标
+ *Co_XYZtoBLH  将空间直角坐标转换为大地坐标
+ *Co_XYZtoNewXYZ  用布尔萨七参数法进行不同椭球下空间直角坐标的转换
+ *Co_BLHtoPxyz  将大地坐标用高斯投影转换为平面坐标
+ *sloveX  求解赤道到纬度B所对应的子午线弧长，辅助Co_BLHtoPxyz方法
+ *dddmm5_to_dddd  将度分格式数据转换为度，例如30°15.32548′对应的度分数据格式为03015.32548时适用此方法
+ *dddmm3_to_dddd  将度分格式数据转换为度，例如30°15.32548′对应的度分数据格式为030.1532548时适用此方法
+ *d2rad 将度转化为弧度
+ *其他参数说明：
+ *m,ex,ey,ez,dx,dy,dz  布尔萨七参数
+ *L0  投影带的中央子午线
+ *a  椭球长半轴
+ *b  椭球短半轴
+ */
